@@ -51,8 +51,6 @@ function onGalleryContainerClick(evt) {
   lightBoxRef.classList.add('is-open');
 
   setLightboxImage(evt.target.dataset.source, evt.target.alt);
-  // lightboxImage.src = evt.target.dataset.source;
-  // lightboxImage.alt = evt.target.alt;
 
   currentIndex = Number(evt.target.dataset.index);
 
@@ -61,8 +59,8 @@ function onGalleryContainerClick(evt) {
 
 function lightboxImageClose() {
   lightBoxRef.classList.remove('is-open');
-  lightboxImage.src = '';
-  lightboxImage.alt = '';
+  setLightboxImage();
+
   window.removeEventListener('keydown', onKeyDown);
 }
 
@@ -83,7 +81,7 @@ function onKeyDown(evt) {
   }
 }
 
-function setLightboxImage(currentSource, currentAlt) {
+function setLightboxImage(currentSource = '', currentAlt = '') {
   lightboxImage.src = currentSource;
   lightboxImage.alt = currentAlt;
 }
@@ -98,8 +96,6 @@ function showNextImage() {
     gallery[currentIndex].original,
     gallery[currentIndex].description,
   );
-  // lightboxImage.src = gallery[currentIndex].original;
-  // lightboxImage.alt = gallery[currentIndex].description;
 }
 
 function showPreviousImage() {
@@ -112,7 +108,4 @@ function showPreviousImage() {
     gallery[currentIndex].original,
     gallery[currentIndex].description,
   );
-
-  // lightboxImage.src = gallery[currentIndex].original;
-  // lightboxImage.alt = gallery[currentIndex].description;
 }
